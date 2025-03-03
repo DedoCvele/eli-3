@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +8,16 @@
   </head>
   <body>
     <header>
-      <h1>Bricklaying in China (2018)</h1>
+      <div class="header-content">
+        <h1>Bricklaying in China (2018)</h1>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+          </label>
+          <span>Dark Mode</span>
+        </div>
+      </div>
       <nav>
         <ul>
           <li><a href="#introduction">Introduction</a></li>
@@ -1369,5 +1378,28 @@ Finally, the study discovered broad connections across different areas of activi
         </div>
       </nav>
     </footer>
+    <script>
+      const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+      const currentTheme = localStorage.getItem('theme');
+
+      if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') {
+          toggleSwitch.checked = true;
+        }
+      }
+
+      function switchTheme(e) {
+        if (e.target.checked) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+          localStorage.setItem('theme', 'light');
+        }
+      }
+
+      toggleSwitch.addEventListener('change', switchTheme, false);
+    </script>
   </body>
 </html>
