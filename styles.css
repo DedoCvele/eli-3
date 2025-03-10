@@ -429,4 +429,21 @@ footer {
     color: var(--text-color);
     font-size: 0.95em;
     line-height: 1.5;
+}
+
+/* Secret link styling */
+.secret-link {
+  opacity: 0.5;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+}
+
+.secret-link:hover {
+  opacity: 1;
+  color: #e91e63 !important;
+  transform: scale(1.2);
+}
+
+[data-theme="dark"] .secret-link:hover {
+  color: #ff4081 !important;
 } 
